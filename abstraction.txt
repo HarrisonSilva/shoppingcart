@@ -1,0 +1,154 @@
+                                                        Abstração do Projeto Carrinho de Compras
+
+Requisito 1 (Cobertura de 50% de testes do arquivo fetchFunctions)
+Criar teste para funcao fetchProductsList
+
+Primeiro teste: Testar se fetchProductsList e uma função
+
+Segundo teste: Testar se a função fetchProductsList com parametro 'computador'
+e teste se fetch foi chamada
+
+Terceiro teste: Testar se a função fetchProductsList com parametro 'computador'
+a função fetch usa o endpoint da url do mercado livre com final computador
+
+Quarto teste: Testar se função fetchProductsList com parametro 'computador' e igual uma
+objeto computadorSearch que ja esta importado no arquivo
+
+Quinto teste: Testar se a função fetchProductsList sem parametro retorna um erro com
+a mensagem : 'Termo de busca não informado'
+																						
+																						
+Requisito 2 (Implementar a Função fetchProductsList)
+a funcao fetchProductsList esta dentro do arquivo fetchFunctions
+
+Passo 1: Fazer a Requisição da Api dentro da função
+
+Passo 2: dar um Parametro para a função e fazer um if para caso a funçao seja chamada sem
+parametro retorne um erro com a mensagem ('Termo de busca não informado')
+
+Passo 3:  Usar template literals na chamada da Api e colocar o EndPoint como parametro da função
+
+
+Requisito 3 (Criar uma Lista de Produtos)
+Criar lista de produtos dentro da funcao fetchProductsList com Api do Mercado Livre
+
+Passo 1: Chamar a funçao passando o parametro "computador" [dica ==>] criar um arquivo main.js
+pra chamar a função
+
+Passo 2: na Função createProductItemElement no arquivo shopFunction.js crio minhas tags HTML
+referente a cada um dos produtos retornados pela Api [ATENÇAO ==>] a função createProductItemElement
+ja esta implementada no arquivo fetchFunctions
+
+Passo 3: Todos Elementos retornados da função createProductItemElement(product) como filho do elemento
+<section class="items">
+
+
+Requisito 4 (Adcionar um texto carregando durante uma requisiçao da Api)
+Adcionar uma Tag com texto carregando durante a chamada da Api
+
+Observação: O Usuario quando faz uma requisiçao pra api a reposta nao chega na mesma hora
+entao precisamos colocar uma mensagem pra ele saber que deve esperar..
+Sugestão: Criar uma Funçao que use o DOM pra criar a "Tag" com o elemento texto carregando 
+e retirala da tela
+
+Passo 1: Criar uma "Tag" que tenha o texto carregando... que deve ser exibido em algum 
+lugar da tela
+
+Passo 2: Adcionar uma classe loading na "Tag" que possui o texto carregando...
+
+Passo 3: Apos a requisiçao terminar, remover a "Tag" da tela
+
+
+Requisito 5 (Exibir uma mensagem de erro caso algo de errado na requisiçao da Api)
+se der erro na requisiçao da Api exibe um texto (Algum erro ocorreu, recarregue a pãgina e tente novamente)
+
+Passo 1: Criar uma "Tag" que tenha o texto (Algum erro ocorreu, recarregue a página e tente novamente)
+que pode ser exibido em algum lugar da pagina
+
+Passo 2: Add a classe error a "Tag" que possue o texto do erro
+
+Passo 3: Exibir a "Tag" apenas se algum erro acontecer na reuisiçao da api
+
+Requisito 6 (obertura de 100% de testes do arquivo fetchFunctions)
+Implementar os testes necessarios da função fetchProduct
+
+Passo 1: Testar se a função fetchProduct e uma função
+
+Passo 2: Executar a função fetchProduct com parametro do item ("MLB14055'9561") e teste se fetch foi chamada
+
+Passo 3: Testar se a função fetchProduct com parametro do item ("MLB14055'9561") a função fetch
+usa o endpoint da url do mercado livre com o endpoint ("MLB14055'9561")
+
+Passo 4: Testar se o retorno da função fetchProduct com parametro ("MLB14055'9561") e uma estrutura
+de dados igual ao objeto item que ja esta importado do arquivo
+
+Passo 5: Testar se a função fetchProduct sem parametro, retorna um erro com a mensagem 'ID não informado'
+
+
+Requisito 7 (Implementar a Função fetchProduct)
+a Função fetchProduct vai retornar dados de um produto e add ele no carrinho
+
+Passo 1: A Função deve fazer a requisiçao dos detalhes de apenas um produto
+
+Passo 2: A Função que faz a requisiçao ja esta criada em helpers/fetchFunctions porem sem implementacao
+
+Passo 3: A função deve ter um parametro que vai receber um id que sera usado na busca
+caso contrario  deve retornar um erro com a mensagem 'ID não informado'
+
+Passo 4: Usar o endpoint da url do mercado livre com endpoint parametro $ItemID
+
+
+Requisito 8 (Adcionar produto no carrinho de compras)
+Implementar a Funcionalidade que adciona produtos no carrinho de compras
+
+Passo 1:  Cada produto da Pagina deve ter um botao com o nome adcionar ao carrinho e ao clicar nesse botao
+a requisicao deve retornar todos os detalhes do prodto
+
+Funcionalidade do botao Adicionar ao carrinho
+
+Passo 2: na função saveCartID do arquivo helpers/cartFunctions, salvar o id do produto no localstorage
+
+LEIA COM BASTANTE ATENCAO A FUNCAO PARA ENTENDER O FUNCIONAMENTO
+1 - uma requiciçao deve ser feita usando a função fetchProduct para obter os dethalhes do produto
+
+LEIA COM BASTANTE ATENCAO A FUNCAO PARA ENTENDER O FUNCIONAMENTO
+2- com os dados do produtos retornados, voce deve add o produto no carrinho de compras use a função
+createCartItemElement que esta no arquivo shopFunction.js para criar os "Tags" referentes ao item do carrinho
+
+Passo 3: Add o a "Tag" retornada da função createCartItemElement como filho do elemento 
+<ol class="cart__items">
+
+
+Requisito 9 (Carregar o carrinho de compras ao iniciar a Pagina)
+Recuperar os itens adcionados no carrinho de compras do localStorage
+
+Passo 1:  Usando a função getSavedCartIDs dentro do arquivo helpers/cartFunctions que tem um array de ids
+eu devo usar a função fetchProduct para cada um desses ids e recuperar as informacoes de cada produto
+
+Passo 2: Manter a ordem dos produtos adcionados no carrinho, usar o metodo Promise.all para guardar 
+a reposta de todas requisiçoes e so entao adcionar os produtos ao carrinho
+
+[DICA] Usar map para iterar sobre o array de ids e retornar um array de promises usando a função
+createCartItemElement
+
+
+Requisito 10 (Calcular o valor total dos itens do carrinho de compras)
+Calcular o total dos produtos
+
+
+Passo 1: A "Tag" com o valor total dos produtos deve possuir a classe total-price
+
+Observação: Cada vez que o carrinho de compras e modificado, sera necessario calcular o valor total
+dos produtos e apresentalos na pagina principal do projeto
+
+Passo 2: Add um produto ao carrinho
+
+Passo 3: Remover um produto do carrinho
+
+Passo 4: Add o valor total dos produtos ao elemento com a classe total-price
+
+
+Requisito 11
+
+Passo 5: Ao atualizar a pagina o valor total deve ser mantido
+
