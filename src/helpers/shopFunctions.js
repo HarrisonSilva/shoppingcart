@@ -1,4 +1,5 @@
 import { removeCartID } from './cartFunctions';
+import { fetchProductsList } from './fetchFunctions';
 
 // Esses comentários que estão antes de cada uma das funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições!
@@ -105,7 +106,6 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
   section.className = 'product';
 
   section.appendChild(createCustomElement('span', 'product__id', id));
-
   const thumbnailContainer = createCustomElement('div', 'img__container');
   thumbnailContainer.appendChild(createProductImageElement(thumbnail));
   section.appendChild(thumbnailContainer);

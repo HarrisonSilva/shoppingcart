@@ -10,7 +10,7 @@ describe('Teste a função fetchProductsList', () => {
 
   it('fetch é chamado ao executar fetchProductsList', async () => {
     await fetchProductsList('computador')
-    expect(fetch).toHaveBeenCalled()
+    expect(fetch).toBeCalled()
   });
 
   it('fetch é chamado com o endpoint correto ao executar fetchProductsList', async () => {
@@ -19,12 +19,16 @@ describe('Teste a função fetchProductsList', () => {
   });
 
   it('testar se a função fetchProductsList(computador) e igual ao objeto computadorSearch', async () => {
-    await fetchProductsList('computador')
-    expect(fetchProductsList).toMatchObject(computadorSearch)
+   const esperado = await fetchProductsList('computador')
+   expect(esperado).toEqual(computadorSearch)
   })
   
-  it('Testar se fetchProductsList() retorna o erro "Termo de busca não informado"', () => {
-    expect(fetchProductsList().toThrow('Termo de busca não informado'))
+  it('Testar se fetchProductsList() retorna o erro "Termo de busca não informado"', async () => {
+    try { 
+        await fetchProductsList()
+    } catch (error) {
+      expect(error.message).toBe('Termo de busca não informado')
+    }
   })
 
   // it('...', () => {
